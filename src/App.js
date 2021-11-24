@@ -2,9 +2,11 @@ import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import BottomNav from './components/BottomNav'
-import Competition from './pages/Competition'
 import Standing from './pages/Standing'
 import Team from './pages/Team'
+import Matches from './pages/Matches'
+import MatchDetail from './pages/MatchDetail'
+import About from './pages/About'
 
 const history = createBrowserHistory()
 
@@ -17,12 +19,11 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<Navigate replace to="/standing" />} />
-          {/* <Route path="/competition" element={<Competition />} /> */}
           <Route path="/standing" element={<Standing />} />
           <Route path="/standing/:teamId" element={<Team />} />
-          {/* <Route path="/actor" element={<Actor />} /> */}
-          {/* <Route path="/actor/:actorId" element={<ActorDetail />} /> */}
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/matches" element={<Matches />} />
+          <Route path="/matches/:matchId" element={<MatchDetail />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <footer>
           <BottomNav />

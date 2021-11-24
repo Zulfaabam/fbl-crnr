@@ -39,6 +39,10 @@ export default function Standing(props) {
     loadData()
   }, [])
 
+  if (loading) {
+    return <h2>Loading...</h2>
+  }
+
   return (
     <div>
       <table className="stdcss">
@@ -55,51 +59,46 @@ export default function Standing(props) {
           </tr>
         </thead>
         <tbody>
-          {loading ? (
-            <h6 className="loadings">Loading data . . .</h6>
-          ) : (
-            standing.map((stand, id) => (
-              <tr key={id}>
-                <td>{stand.position}</td>
-                <td>
-                  <NavLink
-                    to={`/standing/${stand.team.id}`}
-                    onClick={() => history.push(`/standing/${stand.team.id}`)}
-                  >
-                    <p>{stand.team.name}</p>
-                  </NavLink>
-                </td>
-                <td className="posctr">
-                  <p>{stand.playedGames}</p>
-                </td>
-                <td className="posctr">
-                  <p>{stand.won}</p>
-                </td>
-                <td className="posctr">
-                  <p>{stand.draw}</p>
-                </td>
-                <td className="posctr">
-                  <p>{stand.lost}</p>
-                </td>
-                <td className="posctr">
-                  <p>{stand.goalDifference}</p>
-                </td>
-                <td className="posctr">
-                  <p>
-                    <b>{stand.points}</b>
-                  </p>
-                </td>
-              </tr>
-            ))
-          )}
-
-          {hasError && (
-            <h6 className="loadings">
-              An error occurred while fetching data, data cannot be loaded,
-            </h6>
-          )}
+          {standing.map((stand, id) => (
+            <tr key={id}>
+              <td>{stand.position}</td>
+              <td>
+                <NavLink
+                  to={`/standing/${stand.team.id}`}
+                  onClick={() => history.push(`/standing/${stand.team.id}`)}
+                >
+                  <p>{stand.team.name}</p>
+                </NavLink>
+              </td>
+              <td className="posctr">
+                <p>{stand.playedGames}</p>
+              </td>
+              <td className="posctr">
+                <p>{stand.won}</p>
+              </td>
+              <td className="posctr">
+                <p>{stand.draw}</p>
+              </td>
+              <td className="posctr">
+                <p>{stand.lost}</p>
+              </td>
+              <td className="posctr">
+                <p>{stand.goalDifference}</p>
+              </td>
+              <td className="posctr">
+                <p>
+                  <b>{stand.points}</b>
+                </p>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+      {hasError && (
+        <h6 className="loadings">
+          An error occurred while fetching data, data cannot be loaded,
+        </h6>
+      )}
     </div>
   )
 }

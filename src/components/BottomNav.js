@@ -7,8 +7,8 @@ export default function BottomNav() {
       <NavLink to="/standing" className="link nav-link">
         Standing
       </NavLink>
-      <NavLink to="/club" className="link nav-link">
-        Club
+      <NavLink to="/matches" className="link nav-link">
+        Matches
       </NavLink>
       <NavLink to="/about" className="link nav-link">
         About
