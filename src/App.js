@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import BottomNav from './components/BottomNav'
+import Competition from './pages/Competition'
+import Standing from './pages/Standing'
+import Team from './pages/Team'
+
+const history = createBrowserHistory()
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter history={history}>
+      <div className="app">
+        <header>
+          <h1>Football Corner</h1>
+        </header>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/standing" />} />
+          {/* <Route path="/competition" element={<Competition />} /> */}
+          <Route path="/standing" element={<Standing />} />
+          <Route path="/standing/:teamId" element={<Team />} />
+          {/* <Route path="/actor" element={<Actor />} /> */}
+          {/* <Route path="/actor/:actorId" element={<ActorDetail />} /> */}
+          {/* <Route path="/about" element={<About />} /> */}
+        </Routes>
+        <footer>
+          <BottomNav />
+        </footer>
+      </div>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
