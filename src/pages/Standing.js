@@ -44,18 +44,19 @@ export default function Standing(props) {
   }
 
   return (
-    <div>
-      <table className="stdcss">
-        <thead className="">
+    <div className="standing">
+      <h1 className="title">Premier League Standing</h1>
+      <table className="standing-table">
+        <thead>
           <tr>
             <th>#</th>
             <th>Club Name</th>
-            <th className="posctr pd">G</th>
-            <th className="posctr pd">W</th>
-            <th className="posctr pd">D</th>
-            <th className="posctr pd">L</th>
-            <th className="posctr pd">GD</th>
-            <th className="posctr pd">Pts</th>
+            <th>G</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>GD</th>
+            <th>Pts</th>
           </tr>
         </thead>
         <tbody>
@@ -66,6 +67,7 @@ export default function Standing(props) {
                 <NavLink
                   to={`/standing/${stand.team.id}`}
                   onClick={() => history.push(`/standing/${stand.team.id}`)}
+                  className="link team-link"
                 >
                   <p>{stand.team.name}</p>
                 </NavLink>

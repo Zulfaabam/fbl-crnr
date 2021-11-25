@@ -10,6 +10,14 @@ export default function BottomNav() {
       <NavLink to="/matches" className="link nav-link">
         Matches
       </NavLink>
+      <a
+        href="https://www.premierleague.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="link nav-link"
+      >
+        EPL Website
+      </a>
       <NavLink to="/about" className="link nav-link">
         About
       </NavLink>

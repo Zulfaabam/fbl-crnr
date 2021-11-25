@@ -41,33 +41,48 @@ export default function MatchDetail() {
       : match.score.fullTime.awayTeam
 
   return (
-    <div>
+    <div className="match">
       {match === undefined ? (
         'Wait a moment'
       ) : (
         <div>
-          <h1>{match.competition.name}</h1>
-          <h2>Matchday {match.matchday}</h2>
-          <h3>
+          <h1 className="title">{match.competition.name}</h1>
+          <h2 className="title">Matchday {match.matchday}</h2>
+          <h3 className="title">
             {match.homeTeam.name}{' '}
             <span>
               {scoreHomeTeam} - {scoreAwayTeam}
             </span>{' '}
             {match.awayTeam.name}
           </h3>
-          <p>
-            <strong>Stadium: </strong> {match.venue}
-          </p>
-          <p>
-            <strong>Referees: </strong>
-          </p>
-          {match.referees.map((r) => {
-            return (
-              <p key={r.id}>
-                {r.name} from {r.nationality}
-              </p>
-            )
-          })}
+          <div className="match-detail">
+            <p>
+              <strong>Stadium: </strong> {match.venue}
+            </p>
+            <p>
+              <strong>Time: </strong> {match.utcDate.replace('T', ' ')} UTC
+            </p>
+            <p>
+              <strong>Referees: </strong>
+            </p>
+            {match.referees.map((r) => {
+              return (
+                <p key={r.id}>
+                  {r.name} from {r.nationality}
+                </p>
+              )
+            })}
+            <p>
+              <strong>Status: </strong>
+              {match.status}
+            </p>
+            <p>
+              <strong>Winner: </strong>
+              {match.score.winner === 'HOME_TEAM'
+                ? match.homeTeam.name
+                : match.awayTeam.name}
+            </p>
+          </div>
         </div>
       )}
     </div>

@@ -29,14 +29,14 @@ export default function Team() {
   console.log(team)
 
   return (
-    <div>
+    <div className="team">
       {team === undefined ? (
         'Wait a moment'
       ) : (
-        <div>
+        <div className="team-content">
+          <h1 className="title">{team.name}</h1>
           <img src={team.crestUrl} alt={`${team.name} emblem`} />
-          <h1>{team.name}</h1>
-          <div>
+          <div className="team-detail">
             <p>
               <strong>Founded:</strong> {team.founded}
             </p>
@@ -51,7 +51,7 @@ export default function Team() {
             </p>
             <ul>
               {team.activeCompetitions.map((c) => {
-                return <li key={c.id}>{c.name}</li>
+                return <li key={c.id}>{c.name},</li>
               })}
             </ul>
             <p>
@@ -59,7 +59,7 @@ export default function Team() {
             </p>
             <ul>
               {team.squad.map((s) => {
-                return <li key={s.id}>{s.name}</li>
+                return <li key={s.id}>{s.name},</li>
               })}
             </ul>
           </div>

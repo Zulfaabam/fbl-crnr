@@ -60,16 +60,17 @@ export default function Matches(props) {
   }
 
   return (
-    <div>
+    <div className="matches">
       <div>
-        <p className="center-align">Matchday {currentMatchday}</p>
+        <h1 className="title">Premier League</h1>
+        <h2 className="title">Matchday {currentMatchday} Results</h2>
       </div>
-      <table>
+      <table className="match-table">
         <thead className="header">
           <tr>
-            <th></th>
-            <th className="center-align"></th>
-            <th></th>
+            <th>Home Team</th>
+            <th>Score</th>
+            <th>Away Team</th>
           </tr>
         </thead>
         <tbody>
@@ -77,16 +78,17 @@ export default function Matches(props) {
             .filter((md) => md.matchday === matchDay)
             .map((x) => (
               <tr key={x.id}>
-                <td className="left-align fixture">{x.homeTeam.name}</td>
+                <td className="home">{x.homeTeam.name}</td>
                 <td className="fixture">
                   <NavLink
                     to={`/matches/${x.id}`}
                     onClick={() => history.push(`/matches/${x.id}`)}
+                    className="link score-link"
                   >
                     {x.score.fullTime.homeTeam}-{x.score.fullTime.awayTeam}
                   </NavLink>
                 </td>
-                <td className="right-align fixture">{x.awayTeam.name}</td>
+                <td className="away">{x.awayTeam.name}</td>
               </tr>
             ))}
         </tbody>
